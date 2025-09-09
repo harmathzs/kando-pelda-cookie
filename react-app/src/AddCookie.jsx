@@ -16,15 +16,18 @@ export default class AddCookie extends React.Component {
     handleButtonClick = e => {
         e.preventDefault();
 
-        console.log('cookie before handleButtonClick', document.cookie)
-        // TODO - apply actual key, value data
         let d = new Date();
-        d.setFullYear(d.getFullYear()+1)
-        let expires = "expires="+d.toGMTString();
-        document.cookie = this.state.key+"="+this.state.value+"; "+expires
+        d.setFullYear(d.getFullYear() + 1);
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = this.state.key + "=" + this.state.value + "; " + expires;
 
-        console.log('cookie after handleButtonClick', document.cookie)
-    }
+        console.log('cookie after handleButtonClick', document.cookie);
+
+        // Notify parent to refresh cookie state
+        if (this.props.onChange) {
+            this.props.onChange();
+        }
+    };
 
     render() {
         return <div>

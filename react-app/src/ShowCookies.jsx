@@ -6,14 +6,20 @@ export default class ShowCookies extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({cookieStr: document.cookie})
+        const cookies = document.cookie;
+        console.log("Cookies:", cookies); // check if any cookies visible here
+        this.setState({cookieStr: cookies});
     }
 
-    render() {
-        return <div>
+
+render() {
+    const { cookieStr } = this.props;
+    return (
+        <div>
             <p>
-                {this.state.cookieStr ? this.state.cookieStr : "cookie string is empty yet"}
+                {cookieStr && cookieStr.length > 0 ? cookieStr : "cookie string is empty yet"}
             </p>
         </div>
-    }
+    )
+}
 }
