@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import AddCookie from './AddCookie';
+import ShowCookies from './ShowCookies';
 
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -14,6 +15,9 @@ function App() {
       <h1>Cookies</h1>
       <div className="card">
         <AddCookie />
+      </div>
+      <div className="card">
+        <ShowCookies />
       </div>
     </>
   )
